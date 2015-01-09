@@ -8,6 +8,11 @@ public class MockMailSender implements MailSender {
 	
 	private static final Log log = LogFactory.getLog(MockMailSender.class);
 
+	private DemoObject demoObject;
+	
+	public void setDemoObject(DemoObject demoObject) {
+		this.demoObject = demoObject;
+	}
 	/* (non-Javadoc)
 	 * @see com.naturalprogrammer.spring.sample.mail.MailSender#send(java.lang.String, java.lang.String, java.lang.String)
 	 */

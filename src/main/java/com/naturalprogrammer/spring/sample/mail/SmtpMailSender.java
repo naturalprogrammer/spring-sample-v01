@@ -10,11 +10,18 @@ public class SmtpMailSender implements MailSender {
 	
 	private static final Log log = LogFactory.getLog(SmtpMailSender.class);
 
+	private DemoObject demoObject;
+	
+	public void setDemoObject(DemoObject demoObject) {
+		this.demoObject = demoObject;
+	}
+	
 	/* (non-Javadoc)
 	 * @see com.naturalprogrammer.spring.sample.mail.MailSender#send(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	@Override
 	public void send(String to, String subject, String body) {
+		// demoObject...
 		log.info("Sending SMTP mail to " + to);
 		log.info("Subject: " + subject);
 		log.info("Body: " + body);
