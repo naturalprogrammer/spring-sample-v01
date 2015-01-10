@@ -5,31 +5,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 @Configuration
 public class MailConfig {
 	
 	@Bean
-	//@Profile("dev")
+	@Profile("dev")
 	public MailSender mockMailSender() {
-		MockMailSender mailSender = new MockMailSender();
-		mailSender.setDemoObject(demoObject());
-		return mailSender;
+		return new MockMailSender();
 	}
 
 	@Bean
-	//@Profile("!dev")
-	@Primary
-	public MailSender smtpMailSender(DemoObject demoObject) {
+	@Profile("!dev")
+	public MailSender smtpMailSender(JavaMailSender javaMailSender) {
 		SmtpMailSender mailSender = new SmtpMailSender();
-		mailSender.setDemoObject(demoObject);
+		mailSender.setJavaMailSender(javaMailSender);
 		return mailSender;
 	}
 	
-	@Bean
-	public DemoObject demoObject() {
-		return new DemoObject();
-	}
-
 }

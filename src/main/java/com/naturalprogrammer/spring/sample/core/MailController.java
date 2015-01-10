@@ -1,6 +1,7 @@
 package com.naturalprogrammer.spring.sample.core;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,9 +22,9 @@ public class MailController {
 	}
 	
 	@RequestMapping("/mail")
-	public String sendMail() {
+	public String sendMail() throws MessagingException {
 		
-		mailSender.send("abc@example.com", "Some subject", "the content");
+		mailSender.send("skpatel20@gmail.com", "Some subject", "the content");
 		
 		return "Mail sent";
 	}
